@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cuso JS Desafio 2</title>
+    </head>
+
+    <body>
+
+        <div id="app">
+            <div>
+                <ul id="lista">
+                </ul>
+                <input type="text" id="nome" />
+                <button onClick="adicionar()">Adicionar Pessoa</button>
+            </div>
+
+            <br />
+            <button class="botao">Criar Quadrado</button>
+
+        </div>
+        <script>
+
+
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            //1 e 2
+            
+            var buttonElement = document.querySelector('.botao');
+            var divElement = document.querySelector('#app');
+
+            buttonElement.onclick = function(){//Quando clica no botão
+                
+                var boxElement = document.createElement('div');
+                boxElement.style.width = 100;
+                boxElement.style.height = 100;
+                boxElement.style.backgroundColor = '#f00';
+
+                boxElement.onmouseover = function(){ //Quando passa em cima do quadrado
+                    boxElement.style.backgroundColor = getRandomColor();
+                }
+                divElement.appendChild(boxElement);
+
+            }
+            
+            function getRandomColor() { //gerador de cor 
+                var letters = "0123456789ABCDEF";
+                var color = "#";
+                for (var i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+            var ulElement = document.querySelector('#lista'); //Referenciando a lista
+
+            var inputName = document.querySelector('#nome'); //Referenciando Input
+
+            var nomes = ["Diego", "Gabriel", "Lucas"];
+
+            function add(nome){
+                var liElement = document.createElement('li'); //Criando linha
+            
+                var textElement = document.createTextNode(nome);//Adicionando texto a linha
+
+                liElement.appendChild(textElement); //Juntando texto ao elemento linha
+
+                ulElement.appendChild(liElement); //Juntando linha na Lista Referenciada na linha 55
+
+            }
+
+            for (nome of nomes) { //Percorrendo os nomes e adicionando eles com a função
+                add(nome);
+            }
+
+            function adicionar(){
+                add(inputName.value);//Adicionando .value à lista
+
+                inputName.value = "";//Trocando Campo input por "" (vazio)
+            }
+
+            
+        </script>
+    </body>
+</html>

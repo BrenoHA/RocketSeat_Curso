@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cuso JS 4.0 Desafio</title>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <label>Digite seu usuário do GitHub:</label>
+            <br/><br/>
+            <input type="text">
+            <button>Procurar</button>
+            <ul>
+
+            </ul>
+        </div>
+
+        <script>
+
+            var listElement = document.querySelector('#app ul');
+            var buttonElement = document.querySelector('#app button');
+            var inputElement = document.querySelector('#app input');
+
+            function renderRepositories(repositories){
+
+                listElement.innerHTML = ''; //Esse comando limpa a lista que tinha
+
+                var user = inputElement.value;
+                var titleElement = document.createElement('h2');
+                var titleText = document.createTextNode('( ' + user +' )');
+                titleElement.appendChild(titleText);
+                listElement.appendChild(titleElement);
+
+
+                for(repo of repositories){
+                
+                    var textElement = document.createTextNode(repo.name);
+                    var liElement = document.createElement('li');
+                    liElement.appendChild(textElement);
+
+                    listElement.appendChild(liElement);
+                }
+            }
+
+
+            buttonElement.onclick = function(){
+                var user = inputElement.value;
+
+                axios.get('https://api.github.com/users/' + user + '/repos')
+                //then pega o resolve
+                .then(function(response) {
+                    renderRepositories(response.data);
+                    inputElement.value = '';
+                })
+                //catch pega o reject
+                .catch(function(error) {
+                    alert('error');
+                });
+
+            }
+
+            
+
+
+
+        </script>
+    </body>
+</html>

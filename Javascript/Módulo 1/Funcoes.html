@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Cuso JS 1.1</title>
+    </head>
+
+    <body>
+        <script>
+
+            function retornaSexo(sexo) {
+                
+                if (sexo == 'M') {
+                    return 'MASCULINO';
+                } else if (sexo == 'F') {
+                    return 'FEMININO';
+                } else {
+                    return 'OUTRO';
+                }
+            }
+
+            function retornaSexo2(sexo){
+
+                switch (sexo) {
+                    case 'M':
+                        return 'Masculino';
+                    case 'F':  
+                        return 'Feminino';
+                    default:
+                        return 'Outro';
+
+                }
+            }
+
+            console.log(retornaSexo('M'));
+            console.log(retornaSexo2('a'));
+
+            //////////////
+            //if (sexo === 'M') {
+            //    return 'Male';
+            //} else {
+            //    return 'Female';
+            //}
+            // CONDIÇÃO TERNÁRIA
+            ///Mesma coisa que:
+
+            var sexo = 'M';
+            var resultado = (sexo === 'M') ? 'Male' : 'Female';
+            console.log(resultado);
+
+
+
+
+        </script>
+    </body>
+</html>

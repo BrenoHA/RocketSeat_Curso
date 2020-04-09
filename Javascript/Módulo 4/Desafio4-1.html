@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cuso JS 4.0 Desafio</title>
+    </head>
+
+    <body>
+        <div id="app">
+            <input type="text" placeholder="Digite sua idade">
+            <button>Checar</button>
+        </div>
+
+        <script>
+
+            var inputElement = document.querySelector('#app input'); 
+
+            var buttonElement = document.querySelector('#app button');
+
+            var idadePromise = function(){
+                return new Promise(function(resolve,reject){
+
+                    buttonElement.onclick = function(){
+
+                        var idade = inputElement.value;
+                        setTimeout(function(){ //Espera 2 seg
+                            
+                        if (idade >= 18){
+                            resolve('Pode dirigir');
+                        } else if (idade < 18) {
+                            reject('Não pode dirigir');
+                        }
+                        }, 2000); //
+                        
+                    }
+                })
+
+            }
+
+            idadePromise()
+                .then(function(response){
+                    alert(response);
+                })
+                .catch(function(reject){
+                    alert(reject);
+                })
+
+
+
+
+        </script>
+    </body>
+</html>

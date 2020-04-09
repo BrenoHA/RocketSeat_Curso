@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cuso JS 2.0</title>
+    </head>
+
+    <body>
+
+        <div id="app">
+            <input id="nome" />
+
+            <div class="box"> </div>
+
+
+        </div>
+
+        <script>
+
+            // <a href="https://www.google.com/"> Clique aqui para acessar o Google </a>
+
+            var linkElement = document.createElement('a');
+
+            linkElement.setAttribute('href', 'https://www.google.com/');
+            linkElement.setAttribute('title', 'Site do Google');
+
+            var textElement = document.createTextNode('Clique aqui para acessar o Google');
+
+            linkElement.appendChild(textElement); //Adicionando filha(text)
+
+            var divElement = document.querySelector('#app');
+
+            divElement.appendChild(linkElement);
+
+
+            var inputElement = document.querySelector('#nome');// referenciando o input
+            divElement.removeChild(inputElement);//Removendo input do HTML no js //comenta para ver diferença//
+        
+            ///////////////////estilo
+
+            var boxElement = document.querySelector('.box');
+
+            boxElement.style.width = 100;
+            boxElement.style.height = 100;
+            boxElement.style.backgroundColor = '#f00';
+            
+
+
+
+
+
+
+
+
+        </script>
+    </body>
+</html>

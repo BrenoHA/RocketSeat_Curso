@@ -1,0 +1,89 @@
+<html>
+    <head>
+        <title>Cuso JS Desafio</title>
+    </head>
+
+    <body>
+        <script>
+            ///////////////////////////////////////
+            console.log("1--------------------");
+
+            var endereco = {
+            rua: "Rua dos pinheiros",
+            numero: 1293,
+            bairro: "Centro",
+            cidade: "São Paulo",
+            uf: "SP"
+            };
+            console.log("O usuário mora em", endereco.cidade, "/", endereco.uf, ", no bairro", endereco.bairro, ", na rua", endereco.rua, " com n° ", endereco.numero);
+
+            ///////////////////////////////////////
+            console.log("2--------------------");
+
+            function pares(x, y) {
+                for(x; x <= y; x++) {
+                    if ( (x % 2 ) == 0){
+                        console.log(x);
+                    }
+                }
+            }
+            
+            console.log(pares(32, 50));
+
+            ///////////////////////////////////////
+            console.log("3--------------------");
+
+            function temHabilidade(skills, a) {
+                var result = skills.indexOf(a) >= 0;
+                return result;
+            }
+            var skills = ["Javascript", "ReactJS", "React Native"];
+
+            console.log(temHabilidade(skills, "ReactJS"));
+
+            ///////////////////////////////////////
+            console.log("4--------------------");
+
+            function experiencia(anos) {
+                if(anos == 0 || anos == 1){
+                    return 'Iniciante';
+                } else if (anos > 1 && anos <= 3){
+                    return 'Intermediário';
+                } else if(anos >= 4 && anos <= 6){
+                    return 'Avançado';
+                } else if(anos >= 7) {
+                    return 'Jedi';
+                } else {
+                    return 'Digita certo krl';
+                }
+            }
+            var anosEstudo = 7;
+            console.log(experiencia(anosEstudo));
+
+            ///////////////////////////////////////
+            console.log("5--------------------");
+
+            var usuarios = [
+            {
+                nome: "Diego",
+                habilidades: ["Javascript", "ReactJS", "Redux"]
+            },
+            {
+                nome: "Gabriel",
+                habilidades: ["VueJS", "Ruby on Rails", "Elixir"]
+            }
+            ];
+
+            console.log(usuarios[0].nome, "possui as habilidades: ", usuarios[0].habilidades[0],",", usuarios[0].habilidades[1],",", usuarios[0].habilidades[2]);
+            //Usando Join
+            console.log(usuarios[1].nome, "possui as habilidades: ", usuarios[0].habilidades.join(", "));
+
+            //Usando FOR OF
+            console.log("Outra maneira");
+            for (let usuario of usuarios){
+                console.log('O ' + usuario.nome + ' possui as habilidades: ' + usuario.habilidades.join(", "));
+            }   
+
+        </script>
+    </body>
+</html>

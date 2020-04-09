@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Cuso JS 2.0</title>
+    </head>
+
+    <body>
+
+        <div id="app">
+            <input type="text" name="nome" id="nome" class="nome" />
+            <button class="botao"> Adicionar </button>
+
+        </div>
+
+        <script>
+
+
+            //Maneiras de referencias Elementos html
+            var inputElement1 = document.getElementById('nome');
+            var inputElement2 = document.getElementsByTagName('input')[0];
+            var inputElement3 = document.getElementsByClassName('nome')[0];
+
+            console.log(inputElement1);
+            console.log(inputElement2);
+            console.log(inputElement3);
+            console.log("-----");
+
+            var inputElement = document.querySelector('body div#app input');
+            var inputElementa = document.querySelector('input[name=nome]');
+
+            console.log(inputElement);
+            console.log(inputElementa);
+            console.log("-----");
+
+            var inputElementb = document.querySelector('input');
+            var inputElementall = document.querySelectorAll('input');
+
+            console.log(inputElementb);
+            console.log(inputElementall);
+
+            // colocando funções nos elementos pelo Script e não pelo html
+            var btnElement = document.querySelector('button.botao');
+            var inputEle = document.querySelector('input[name=nome]');
+
+            btnElement.onclick = function() {
+                var text = inputEle.value;
+                alert (text);
+            }
+
+
+        </script>
+    </body>
+</html>
