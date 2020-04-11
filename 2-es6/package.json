@@ -6,11 +6,13 @@
   "dependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
     "@babel/preset-env": "^7.9.5"
   },
   "scripts": {
     "un": "babel ./modulo1/main.js -o ./modulo1/bundle.js -w",
     "deux": "babel ./modulo1/2main.js -o ./modulo1/2bundle.js -w",
-    "trois": "babel ./modulo1/3main.js -o ./modulo1/3bundle.js -w"    
+    "trois": "babel ./modulo1/3main.js -o ./modulo1/3bundle.js -w",
+    "desafio1": "babel ./modulo1/desafio1_main.js -o ./modulo1/desafio1_bundle.js -w"
   }
 }
