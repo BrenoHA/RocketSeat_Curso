@@ -13,6 +13,7 @@
     "un": "babel ./modulo1/main.js -o ./modulo1/bundle.js -w",
     "deux": "babel ./modulo1/2main.js -o ./modulo1/2bundle.js -w",
     "trois": "babel ./modulo1/3main.js -o ./modulo1/3bundle.js -w",
-    "desafio1": "babel ./modulo1/desafio1_main.js -o ./modulo1/desafio1_bundle.js -w"
+    "desafio1": "babel ./modulo1/desafio1_main.js -o ./modulo1/desafio1_bundle.js -w",
+    "desafio2": "babel ./modulo1/desafio2_main.js -o ./modulo1/desafio2_bundle.js -w"
   }
 }
