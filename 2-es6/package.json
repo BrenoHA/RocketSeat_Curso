@@ -10,7 +10,7 @@
     "@babel/preset-env": "^7.9.5"
   },
   "scripts": {
-    "un": "babel ./modulo1/main.js -o ./modulo1/bundle.js -w",
+    "un": "babel ./modulo1/1main.js -o ./modulo1/1bundle.js -w",
     "deux": "babel ./modulo1/2main.js -o ./modulo1/2bundle.js -w",
     "trois": "babel ./modulo1/3main.js -o ./modulo1/3bundle.js -w",
     "desafio1": "babel ./modulo1/desafio1_main.js -o ./modulo1/desafio1_bundle.js -w",
