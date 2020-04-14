@@ -3,17 +3,24 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
     "@babel/plugin-proposal-object-rest-spread": "^7.9.5",
-    "@babel/preset-env": "^7.9.5"
+    "@babel/preset-env": "^7.9.5",
+    "babel-loader": "^8.1.0",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
   },
   "scripts": {
     "un": "babel ./modulo1/1main.js -o ./modulo1/1bundle.js -w",
     "deux": "babel ./modulo1/2main.js -o ./modulo1/2bundle.js -w",
     "trois": "babel ./modulo1/3main.js -o ./modulo1/3bundle.js -w",
     "desafio1": "babel ./modulo1/desafio1_main.js -o ./modulo1/desafio1_bundle.js -w",
-    "desafio2": "babel ./modulo1/desafio2_main.js -o ./modulo1/desafio2_bundle.js -w"
+    "desafio2": "babel ./modulo1/desafio2_main.js -o ./modulo1/desafio2_bundle.js -w",
+    
+    "dev": "webpack-dev-server --mode=development",
+    "build": "webpack --mode=production"
   }
 }
