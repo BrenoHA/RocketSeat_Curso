@@ -1,122 +1,60 @@
-import ClasseUsuario, { idade as idadeUsuario } from './functions';
+class App {
+    constructor(){
+        this.repositories = [];
 
-ClasseUsuario.info(); //Apenas Teste
-console.log('idade: ' + idadeUsuario); // idade: 23
+        this.formEl = document.getElementById('repo-form');
+        this.listEl = document.getElementById('repo-list');
 
-
-/////////////////////////////////////////////////////
-console.log('//////////////////////////////');
-
-import axios from 'axios';
-
-class Api {
-    static async getUserInfo(username) {
-        try {
-            const response = await axios.get(`https://api.github.com/users/${username}`);
-            console.log(response);
-
-        } catch (err) {
-            console.warn('ERRO NA API');
-        }
+        this.registerEvents();
     }
-}
 
-Api.getUserInfo('BrdasdasdenoHA');
-Api.getUserInfo('BrenoHA');
+    registerEvents() {
+        this.formEl.onsubmit = event => this.addRepository(event);
+    }
 
+    addRepository() {
+        event.preventDefault(); //previne carregamento padrão do form
 
-/////////////////////////////////////////////////////
-
-const minhaPromise = () => new Promise((resolve, reject) => {
-    setTimeout(() => { resolve('OK') }, 4000);
-});
-
-/*
-
-minhaPromise().then(response => {
-        console.log(response);
-
-        minhaPromise().then(response => {
-            console.log(response);
-
-            minhaPromise().then(response => {
-                console.log(response);
-            });
+        this.repositories.push({
+            name: 'rocketseat.com.br',
+            description: 'Descrição aqui, tira a sua ideia do papel..',
+            avatar_url: 'https://avatars0.githubusercontent.com/u/28929274?v=4',
+            html_url: 'https://github.com/BrenoHA/RocketSeat_Curso',
         });
-    });
 
-Isso para executar 3 vezes, cascata, mto código
-Ent usa o async/await
-
-async function executaPromise() {
-    console.log(await minhaPromise());
-    console.log(await minhaPromise());
-    console.log(await minhaPromise());
-}
-com arrow functions
-*/
-
-const executaPromise = async () => {
-    console.log(await minhaPromise());
-    console.log(await minhaPromise());
-    console.log(await minhaPromise());
-    console.log('-------------------');
-}
-executaPromise();
-
-//-------------------------------------------------------------------------
-//DESAFIOS
-//A
-
-const delay = () => new Promise(resolve => setTimeout(resolve, 1000));
-
-const umPorSegundo = async () => {
-    await delay(console.log('/-/-/-/-/-/-/-/-/-'));
-    await delay(console.log('1s'));
-    await delay(console.log('2s'));
-    await delay(console.log('3s'));
-
-}
-// function umPorSegundo() {
-//     delay().then(() => {
-//         console.log('1s');
-//         delay().then(() => {
-//             console.log('2s');
-//             delay().then(() => {
-//                 console.log('3s');
-//             });
-//         })
-//     });
-// }
-umPorSegundo();
-
-//B
-//import axios from 'axios';
-
-async function getUserFromGithub(user) {
-        try {
-            const response = await axios.get(`https://api.github.com/users/${user}`);
-
-            console.log(response.data);
-        } catch (err) {
-            console.warn('USUÁRIO NÃO EXISTE');
-        }
-}
-getUserFromGithub('diego3g');
-getUserFromGithub('diego3g124123');
-
-//C Já fiz em cima linha: 10 (msm exemplo da aula)
-
-// D
-
-const buscaUsuario = async usuario => {
-    try {
-        const response = await axios.get(`https://api.github.com/users/${usuario}`);
-
-        console.log(response.data);
-    } catch (err) {
-        console.log("Usuário não existe");
+        this.render();
     }
-};
 
-buscaUsuario("diego3g");
+    render() { //apaga percorre e mostra elementos da lista
+        this.listEl.innerHTML= '';
+
+        this.repositories.forEach( repo => {
+
+            let imgEl = document.createElement('img');
+            imgEl.setAttribute('src', repo.avatar_url);
+
+            let titleEl = document.createElement('strong');
+            titleEl.appendChild(document.createTextNode(repo.name));
+
+            let descriptionEl = document.createElement('p');
+            descriptionEl.appendChild(document.createTextNode(repo.description));
+
+            let linkEl = document.createElement('a');
+            linkEl.setAttribute('target', '_blank');
+            linkEl.appendChild(document.createTextNode('Acessar'));
+
+            let listItemEl = document.createElement('li');
+            listItemEl.appendChild(imgEl);
+            listItemEl.appendChild(titleEl);
+            listItemEl.appendChild(descriptionEl);
+            listItemEl.appendChild(linkEl);
+
+            this.listEl.appendChild(listItemEl);
+
+        });
+
+
+    }
+}
+
+new App();
