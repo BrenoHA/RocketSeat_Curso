@@ -1,29 +1,69 @@
+import api from './api'
+
 class App {
+
+
     constructor(){
         this.repositories = [];
 
         this.formEl = document.getElementById('repo-form');
         this.listEl = document.getElementById('repo-list');
+        this.inputEl = document.querySelector('input[name=repository]');
 
         this.registerEvents();
     }
+
 
     registerEvents() {
         this.formEl.onsubmit = event => this.addRepository(event);
     }
 
-    addRepository() {
-        event.preventDefault(); //previne carregamento padrão do form
+    setLoading(loading = true) {
+        if (loading === true) {
+            let loadingEl = document.createElement('span');
+            loadingEl.appendChild(document.createTextNode('Loading...'));
+            loadingEl.setAttribute('id', 'loading');
 
-        this.repositories.push({
-            name: 'rocketseat.com.br',
-            description: 'Descrição aqui, tira a sua ideia do papel..',
-            avatar_url: 'https://avatars0.githubusercontent.com/u/28929274?v=4',
-            html_url: 'https://github.com/BrenoHA/RocketSeat_Curso',
-        });
-
-        this.render();
+            this.formEl.appendChild(loadingEl);
+        } else {
+            document.getElementById('loading').remove();
+        }
     }
+
+
+    async addRepository() {
+        event.preventDefault(); //previne carregamento padrão do form
+        const repoInput = this.inputEl.value;
+
+        if (repoInput.length === 0){
+            return;
+        }
+
+        this.setLoading();
+
+        try{
+
+            const response = await api.get(`/repos/${repoInput}`);
+
+            const { name, description, html_url, owner: { avatar_url } } = response.data;
+
+            this.repositories.push({
+                name,
+                description,
+                avatar_url,
+                html_url,
+            });
+
+            this.inputEl.value = '';
+
+            this.render();
+
+        }catch (err) {
+            alert('O repositório não existe!!');
+        }
+        this.setLoading(false);
+    }
+
 
     render() { //apaga percorre e mostra elementos da lista
         this.listEl.innerHTML= '';
@@ -41,6 +81,7 @@ class App {
 
             let linkEl = document.createElement('a');
             linkEl.setAttribute('target', '_blank');
+            linkEl.setAttribute('href', repo.html_url);
             linkEl.appendChild(document.createTextNode('Acessar'));
 
             let listItemEl = document.createElement('li');
